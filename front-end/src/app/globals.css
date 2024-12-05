@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.pagination {
+  display: flex;
+  align-items: center;
+}
+
+.page-counter {
+  margin: 0 15px; /* Add space between the text and buttons */
+}
+
+button {
+  margin: 0 5px; /* Add space around buttons, if needed */
+  width: auto;
+  height: auto;
+}
+
+.avatar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;  /* Đảm bảo kích thước ổn định */
+  height: 100px;
+  overflow: hidden;
+  border-radius: 50%;  /* Tạo hình tròn */
+}
+
+.avatar-image {
+  object-fit: cover;  /* Đảm bảo ảnh không bị méo */
+}
