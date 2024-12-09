@@ -10,20 +10,18 @@ export default async function Header() {
       <ul className="d-flex gap-1 list-unstyled">
         {user ? (
           <>
-            <li> 
+            <li>
               <div className="avatar-container">
                 <img
-                  src="https://i.imgur.com/gYO8m35.jpeg"
-                  width={60} // Kích thước tùy chỉnh
-                  height={40} 
+                  src={`http://localhost/laravel/back-end/storage/app/public/users/${user.image}`}
                   className="avatar-image"
                 />
               </div>
             </li>
-            <li style={{ fontSize: "25px" ,marginTop: "20px"}}>Xin chào {user.name}
-              <a href="/auth/logout" style={{ fontSize: "15px" ,marginTop: "20px", marginLeft: "10px"}}>Đăng xuất</a>
+            <li style={{ fontSize: "25px" ,marginTop: "30px"}}>Xin chào {user.name}
+              <a href="/auth/logout" style={{ fontSize: "15px" ,marginTop: "30px", marginLeft: "10px"}}>Đăng xuất</a>
             </li>
-          </>
+            </>
         ) : (
           <>
             

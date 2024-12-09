@@ -11,6 +11,8 @@ export default function Form({user, id}) {
         ref={formRef} 
         action={async (formData) => {
             formData.append("id", id);
+            const data = Object.fromEntries(formData);
+            console.log(JSON.stringify(data));
             const response = await handleUpdateUser(formData);
             if(!response){
                 setMsg("Đã có lỗi xảy ra. Vui lòng thử lại sau");
@@ -46,6 +48,15 @@ export default function Form({user, id}) {
                 name="password" 
                 className="form-control" 
                 placeholder="Mật khẩu..."
+            />
+        </div>
+        <div className="mb-3">
+            <label htmlFor="">Ảnh đại diện</label>
+            <input
+                type="file"
+                name="image"
+                className="form-control"
+                placeholder="Hình ảnh"
             />
         </div>
         <button className="btn btn-primary">Cập nhật</button>

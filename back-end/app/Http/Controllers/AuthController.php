@@ -14,12 +14,11 @@ class AuthController extends Controller
         if (!$email || !$password) {
             return response()->json([
                 'success' => false,
-                'message' => "Vui lòng nhập đầy đủ email và mật khẩu"
+                'message' => 'Email or password is required'
             ], 400);
         }
         $status = Auth::attempt(['email' => $email, 'password' => $password]);
         if ($status) {
-            //Tạo token
             $token = $request->user()->createToken('auth');
             return response()->json([
                 'success' => true,
@@ -29,7 +28,7 @@ class AuthController extends Controller
         }
         return response()->json([
             'success' => false,
-            'message' => "Email hoặc mật khẩu không chính xác"
+            'message' => 'Email hoặc mật khẩu không đúng'
         ], 401);
     }
 

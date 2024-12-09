@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import UserList from "./UserList";
 
-
 const getUsers = async (pageNumber) => {
   const response = await fetch(`${process.env.SERVER_API}/users?page=${pageNumber}`);
   return response.json();
@@ -15,14 +14,16 @@ export default function UsersPage() {
   const [page, setPage] = useState(1); // Initialize the page to 1
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [nextPageUrl, setNextPageUrl] = useState(null); // State for next page URL
 
   useEffect(() => {
     const fetchUsers = async () => {
       setLoading(true);
       try {
-        const { success, data } = await getUsers(page);
+        const { success, data} = await getUsers(page);
         if (success) {
           setUsers(data);
+          setNextPageUrl(data.next_page_url);
         } else {
           setError("Không thể tải được người dùng");
         }
@@ -45,18 +46,21 @@ export default function UsersPage() {
         Thêm mới
       </Link>
       <UserList users={users} />
-      <div className="pagination">
+      <div className="pagination center">
         <button
           className="btn btn-secondary btn-sm"
+          style={{display: 'flex',  justifyContent:'center', alignItems:'center', width:'50px'}}
           onClick={() => setPage(prevPage => Math.max(prevPage - 1, 1))}
           disabled={page === 1}
         >
           Trước
         </button>
-        <span className="page-counter">Trang {page}</span>
+        <span className="page-counter" >Trang {page}</span>
         <button 
           className="btn btn-secondary btn-sm"
+          style={{display: 'flex',  justifyContent:'center', alignItems:'center', width:'50px'}}
           onClick={() => setPage(prevPage => prevPage + 1)}
+          disabled={!nextPageUrl}
         >
           Sau
         </button>

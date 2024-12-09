@@ -13,14 +13,16 @@ class UserController extends Controller
      */
     public function index()
     {
-        $q = request()->query('q');
-        $limit = request()->query('limit',5);
+
+        $q=request()->query('q');
+        $limit = request()->query('limit', 5);
         $users = User::latest();
         if($q){
-            $users->where(function($query) use ($q){
-                $query->where('name', 'like', '%' . $q . '%');
-                $query->orwhere('email', 'like', '%' . $q . '%');
-            });
+            $users->where(function($query)use($q)
+        {
+            $query->where('name','like','%'.$q.'%');
+            $query->orWhere('email','like','%'.$q.'%');
+        });
         }
 
         return response()->json([
@@ -44,15 +46,23 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $user = new User;
-        $user->fill($request->all());
+        $user->fill($request->except('password', 'image'));
         $user->password = bcrypt($request->password);
+        $imagePath = $request->file('image')->store('users', 'public');
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imagePath = $image->store( );
+            $user->image = $imagePath;
+        }
+
         $user->save();
+
         return response()->json([
             'success' => true,
             'data' => $user,
             'message' => 'User created successfully'
-        ], 201);
-    }
+        ], 201);}
 
     /**
      * Display the specified resource.
@@ -111,6 +121,17 @@ class UserController extends Controller
         if($request->password){
             $user->password = $request->password;
         }
+        if ($request->hasFile('image')) {
+            // Save the file to the 'users' directory in the 'public' disk
+            $path = $request->file('image')->store('users', 'public');
+        
+            // Extract the file name from the stored path
+            $fileName = basename($path);
+        
+            // Update the user's image field with the file name
+            $user->image = $fileName;
+        }
+
 
         $user->save();
 
@@ -128,22 +149,19 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        $user = User::find($id);
+        $user = User ::find($id);
         if(!$user){
-            return response()->json(
+            return response()-> json(
                 [
                     'success' => false,
-                    'message' => 'User not found'
-                ],
-                404
-            );
-        }
-        $user->delete();
-        return response()->json(
-            [
-                'success' => true,
-                'message' => 'User deleted succesfully'
-            ]
-        );
+                    'message'=>'User not found'
+                ],404);
     }
-}
+    $user->delete();
+    return response()->json(
+        [
+            'success' => true,
+            'message'=>'User deleted successfully'
+        ]
+        );
+}}

@@ -7,18 +7,7 @@ export default function Form({user, id}) {
   const [msg, setMsg] = useState("");
   const formRef = useRef();
   return (
-    <form 
-        ref={formRef} 
-        action={async (formData) => {
-            formData.append("id", id);
-            const response = await handleUpdateUser(formData);
-            if(!response){
-                setMsg("Đã có lỗi xảy ra. Vui lòng thử lại sau");
-                return;
-            }
-            setMsg('Cập nhật người dùng thành công');
-        }}
-    >
+    <div>
         <div className="mb-3">
             <label htmlFor="">Tên</label>
             <input 
@@ -42,18 +31,13 @@ export default function Form({user, id}) {
             />
         </div>
         <div className="mb-3">
-            <label htmlFor="">Mật khẩu</label>
-            <input 
-                type="text" 
-                name="password" 
-                className="form-control" 
-                placeholder="Mật khẩu..."
-                defaultValue={user.password}
-                disabled
-            />
+            <label htmlFor="">Ảnh đại diện</label>
+            <div className="avatar">
+                <div className="w-24 rounded-xl">
+                    <img src={`http://localhost/laravel/back-end/storage/app/public/users/${user.image}`} />
+                </div>
+            </div>
         </div>
-        {/* <button className="btn btn-primary">Cập nhật</button>
-        {msg && <span className="text-danger">{msg}</span>} */}
-    </form>
+    </div>
   );
 }

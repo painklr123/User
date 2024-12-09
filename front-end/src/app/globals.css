@@ -12,7 +12,7 @@
 }
 
 button {
-  margin: 0 5px; /* Add space around buttons, if needed */
+  margin: 0 55px; /* Add space around buttons, if needed */
   width: auto;
   height: auto;
 }
@@ -29,4 +29,10 @@ button {
 
 .avatar-image {
   object-fit: cover;  /* Đảm bảo ảnh không bị méo */
+}
+
+.center { 
+  margin: auto;
+  width: 16%;
+  padding: 10px;
 }

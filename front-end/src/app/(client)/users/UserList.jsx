@@ -42,9 +42,9 @@ export default function UserList({ users }) {
             <th width="5%">STT</th>
             <th>Tên</th>
             <th>Email</th>
-            <th width="5%">Xem</th>
-            <th width="5%">Sửa</th>
-            <th width="5%">Xóa</th>
+            <th width="5%" style={{textAlign: 'center'}}>Xem</th>
+            <th width="5%" style={{textAlign: 'center'}}>Sửa</th>
+            <th width="5%" style={{textAlign: 'center'}}>Xóa</th>
           </tr>
         </thead>
         <tbody>
@@ -56,7 +56,8 @@ export default function UserList({ users }) {
               <td>
                 <Link   
                   href={`/users/view/${user.id}`}
-                  className="btn btn-primary btn-sm"
+                  className="btn btn-primary btn-sm text-white"
+                  style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}
                 > 
                   Xem
                 </Link>
@@ -64,15 +65,17 @@ export default function UserList({ users }) {
               <td>
                 <Link
                   href={`/users/edit/${user.id}`}
-                  className="btn btn-warning btn-sm"
+                  className="btn btn-warning btn-sm text-white"
+                  style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}
                 >
                   Sửa
                 </Link>
               </td>
               <td>
                 <button
-                  className="btn btn-danger btn-sm"
+                  className="btn btn-danger btn-sm text-white"
                   onClick={() => handleRemoveUser(user.id)}
+                  style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}
                 >
                   Xóa
                 </button>
