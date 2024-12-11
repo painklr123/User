@@ -22,7 +22,7 @@ class UserRequest extends FormRequest
     public function rules(): array
 {
     $id = $this->route()->user;
-    $emailRule = 'required|email|unique:users,email';
+    $emailRule = 'sometimes|email|unique:users,email';
 
     if ($id) {
         $emailRule .= ",{$id}";
