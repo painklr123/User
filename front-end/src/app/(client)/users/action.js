@@ -17,11 +17,7 @@ export const handleCreateUser = async (formData) => {
 
 
 export const handleUpdateUser = async (formData, id) => {
-  try {
-    // Append `_method=PATCH` to the FormData
     formData.append("_method", "PATCH");
-
-    // Make the API request
     const response = await fetch(`${process.env.SERVER_API}/users/${id}`, {
       method: "POST",
       body: formData,
@@ -30,19 +26,10 @@ export const handleUpdateUser = async (formData, id) => {
       },
     });
 
-    // Parse the JSON response
-    const responseBody = await response.json();
+  const responseBody = await response.json();
 
-    // Handle response
-    if (response.ok && responseBody.success) {
-      console.log("User updated successfully:", responseBody.data);
-      return responseBody;
-    } else {
-      console.error("Error updating user:", responseBody);
-      return null;
-    }
-  } catch (error) {
-    console.error("Request failed:", error);
-    return null;
+  if (responseBody.success) {
+    return true;
   }
+  return false;
 };
