@@ -43,7 +43,7 @@ export default function UsersPage() {
 
   return (
     <div>
-      <h1>Quản lý người dùng</h1>
+      <h1 className="heading">Quản lý người dùng</h1>
       <Link href="/users/create" className="btn btn-primary mb-3 btn_margin">
         Thêm mới
       </Link>

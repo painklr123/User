@@ -17,7 +17,7 @@ export default async function EditUserPage({params}) {
   }
   return (
     <div>
-      <h1>Cập nhật người dùng</h1>
+      <h1 className="heading">Cập nhật người dùng</h1>
       <Form user={user} id={id}/>
     </div>
   );

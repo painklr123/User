@@ -17,7 +17,7 @@ export default async function ViewUserPage({params}) {
   }
   return (
     <div>
-      <h1>Thông tin người dùng</h1>
+      <h1 className="heading">Thông tin người dùng</h1>
       <Form user={user} id={id}/>
     </div>
   );
