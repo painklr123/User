@@ -2,8 +2,10 @@
 
 import { useRef, useState } from "react";
 import { handleCreateUser } from "../action";
+import { useRouter } from 'next/navigation';
 
 export default function Form() {
+  const router = useRouter()
   const [msg, setMsg] = useState("");
   const formRef = useRef();
   return (
@@ -59,8 +61,11 @@ export default function Form() {
           required
         />
       </div>
-      <button className="btn btn-primary">Thêm mới</button>
+      <button className="btn btn-primary btn_margin">Thêm mới</button>
       {msg && <span className="text-danger">{msg}</span>}
+      <button className="btn btn-secondary btn_margin" onClick={() => router.back()}>
+        Trở về
+      </button>
     </form>
   );
 }

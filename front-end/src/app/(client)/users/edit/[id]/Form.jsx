@@ -2,8 +2,10 @@
 
 import { useRef, useState } from "react";
 import { handleUpdateUser } from "../../action";
+import { useRouter } from 'next/navigation';
 
 export default function Form({ user, id }) {
+    const router = useRouter()
     const [msg, setMsg] = useState("");
     const formRef = useRef();
   
@@ -78,10 +80,13 @@ export default function Form({ user, id }) {
             placeholder="Hình ảnh"
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary btn_margin">
           Cập nhật
         </button>
         {msg && <span className="text-danger">{msg}</span>}
+        <button className="btn btn-secondary btn_margin" onClick={() => router.back()}>
+          Trở về
+        </button>
       </form>
     );
   }

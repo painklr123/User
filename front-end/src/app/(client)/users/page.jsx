@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import UserList from "./UserList";
+import { redirect, useRouter } from 'next/navigation';
 
 const getUsers = async (pageNumber) => {
   const response = await fetch(`${process.env.SERVER_API}/users?page=${pageNumber}`);
@@ -10,6 +11,7 @@ const getUsers = async (pageNumber) => {
 };
 
 export default function UsersPage() {
+  const router = useRouter()
   const [users, setUsers] = useState([]);
   const [page, setPage] = useState(1); // Initialize the page to 1
   const [loading, setLoading] = useState(true);
@@ -42,9 +44,12 @@ export default function UsersPage() {
   return (
     <div>
       <h1>Quản lý người dùng</h1>
-      <Link href="/users/create" className="btn btn-primary mb-3">
+      <Link href="/users/create" className="btn btn-primary mb-3 btn_margin">
         Thêm mới
       </Link>
+      <button className="btn btn-secondary mb-3 btn_margin" onClick={() => redirect(`${process.env.APP_URL}`)}>
+        Trang chủ
+      </button>
       <UserList users={users} />
       <div className="pagination center">
         <button

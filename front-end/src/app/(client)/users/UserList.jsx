@@ -39,18 +39,18 @@ export default function UserList({ users }) {
       <table className="table table-bordered">
         <thead>
           <tr>
-            <th width="5%">STT</th>
+            <th className="text-center" width="5%">STT</th>
             <th>Tên</th>
             <th>Email</th>
-            <th width="5%" style={{textAlign: 'center'}}>Xem</th>
-            <th width="5%" style={{textAlign: 'center'}}>Sửa</th>
-            <th width="5%" style={{textAlign: 'center'}}>Xóa</th>
+            <th className="text-center" width="5%">Xem</th>
+            <th className="text-center" width="5%">Sửa</th>
+            <th className="text-center" width="5%">Xóa</th>
           </tr>
         </thead>
         <tbody>
           {usersData.data.map((user, index) => (
             <tr key={user.id}>
-              <td>{index + 1}</td>
+              <td className="text-center">{index + 1}</td>
               <td>{user.name}</td>
               <td>{user.email}</td>
               <td>

@@ -15,7 +15,6 @@ export const handleCreateUser = async (formData) => {
   return false;
 };
 
-
 export const handleUpdateUser = async (formData, id) => {
     formData.append("_method", "PATCH");
     const response = await fetch(`${process.env.SERVER_API}/users/${id}`, {

@@ -8,6 +8,5 @@ export default function HomePage() {
         Quản lý người dùng
       </Link>
     </div>
-    
   );
 }

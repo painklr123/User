@@ -17,18 +17,25 @@ button {
   height: auto;
 }
 
+.btn_margin{
+  margin-right:10px;
+}
+
 .avatar-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;  /* Đảm bảo kích thước ổn định */
-  height: 100px;
+  width: 60px;  /* Đảm bảo kích thước ổn định */
+  height: 60px;
   overflow: hidden;
   border-radius: 50%;  /* Tạo hình tròn */
+  border-color: black;
 }
 
 .avatar-image {
   object-fit: cover;  /* Đảm bảo ảnh không bị méo */
+  width: 60px;  /* Đảm bảo kích thước ổn định */
+  height: 60px;
 }
 
 .center { 

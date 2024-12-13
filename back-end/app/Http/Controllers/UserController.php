@@ -163,5 +163,5 @@ class UserController extends Controller
             'success' => true,
             'message'=>'User deleted successfully'
         ]
-        );
+    );
 }}

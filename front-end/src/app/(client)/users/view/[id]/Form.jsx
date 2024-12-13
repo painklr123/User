@@ -1,11 +1,9 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { handleUpdateUser } from "../../action";
+import { useRouter } from 'next/navigation';
 
 export default function Form({user, id}) {
-  const [msg, setMsg] = useState("");
-  const formRef = useRef();
+  const router = useRouter()
   return (
     <div>
         <div className="mb-3">
@@ -33,10 +31,18 @@ export default function Form({user, id}) {
         <div className="mb-3">
             <label htmlFor="">Ảnh đại diện</label>
             <div className="avatar">
-                <div className="w-24 rounded-xl">
-                    <img src={`http://localhost/laravel/back-end/storage/app/public/users/${user.image}`} />
+                <div className="avatar-container">
+                    <img 
+                        src={`http://localhost/laravel/back-end/storage/app/public/users/${user.image}`}
+                        className="avatar-image"
+                    />
                 </div>
             </div>
+        </div>
+        <div>
+            <button className="btn btn-secondary btn_margin" onClick={() => router.back()}>
+                Trở về
+            </button>
         </div>
     </div>
   );

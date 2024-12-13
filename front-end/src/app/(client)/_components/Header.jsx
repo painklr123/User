@@ -18,8 +18,8 @@ export default async function Header() {
                 />
               </div>
             </li>
-            <li style={{ fontSize: "25px" ,marginTop: "30px"}}>Xin chào {user.name}
-              <a href="/auth/logout" style={{ fontSize: "15px" ,marginTop: "30px", marginLeft: "10px"}}>Đăng xuất</a>
+            <li style={{ fontSize: "25px" ,marginTop: "10px"}}>Xin chào {user.name}
+              <a href="/auth/logout" style={{ fontSize: "15px" ,marginTop: "10px", marginLeft: "10px"}}>Đăng xuất</a>
             </li>
             </>
         ) : (
